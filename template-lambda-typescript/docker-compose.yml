@@ -5,6 +5,7 @@ services:
     image: postgres:13.5-alpine
     restart: always
     environment:
+      POSTGRES_DB: nursing_home
       POSTGRES_PASSWORD: admin
     ports:
       - 5432:5432
@@ -33,3 +34,11 @@ services:
     ports:
       - 3001:3001
     tty: true
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment: 
+      - PGADMIN_DEFAULT_EMAIL=admin@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - 5050:80
