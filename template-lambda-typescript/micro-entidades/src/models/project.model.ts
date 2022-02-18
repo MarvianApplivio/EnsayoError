@@ -1,13 +1,12 @@
 import { Entity,  PrimaryGeneratedColumn, Column,ManyToOne, } from "typeorm";
 
-import {Trust} from "./trust.model";//ENG:The trust entity is imported to establish relationship. 
+import {Trust} from "./trust.model";
 
 
-
-@Entity()// ENG:Necessary decorator for entities with typeorm 
+@Entity()
 export class Project {
 
-    @PrimaryGeneratedColumn()// ENG: Decorator to declare PK primary keys 
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column("varchar")
@@ -25,7 +24,7 @@ export class Project {
     @Column ("varchar")
     createdBy:number ;
     
-    @ManyToOne(() => Trust, trust => trust.project)//Decorator needed to declare many-to-one relationship
+    @ManyToOne(() => Trust, trust => trust.project)
     trust: Trust;
 
 

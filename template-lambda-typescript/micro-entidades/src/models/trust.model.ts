@@ -1,11 +1,11 @@
-import { Entity, DeleteDateColumn, Column,CreateDateColumn, OneToOne, PrimaryGeneratedColumn, JoinColumn, OneToMany } from "typeorm";
-import {Address} from "./address.model";//ENG:The address entity is imported to establish relationship. 
-import {Project} from "./project.model";//ENG:The project entity is imported to establish relationship. 
+import { Entity, Column, OneToOne, PrimaryGeneratedColumn, JoinColumn, OneToMany } from "typeorm";
+import {Address} from "./address.model";
+import {Project} from "./project.model";
 
-@Entity()// ENG:Necessary decorator for entities with typeorm 
+@Entity()
 export class Trust {
 
-    @PrimaryGeneratedColumn()// ENG: Decorator to declare PK primary keys 
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column("varchar")
@@ -14,26 +14,26 @@ export class Trust {
     @Column("varchar")
     webPage: string;
 
-    @CreateDateColumn()//Special column that is automatically set to the entity's insertion time. You don't need to write a value into this column - it will be automatically set.
+    @Column("varchar")
     createAt:number ;
 
     @Column("varchar")
     email:string;
 
-    @DeleteDateColumn()//Special column that is automatically set to the entity's delete time each time you call soft-delete of entity manager or repository. You don't need to set this column - it will be automatically set.
+    @Column ("varchar")
     deletedAt:number ;
 
-    @Column ("varchar",{nullable: true})
+    @Column ("varchar")
     deletedBy:number;
 
-    @Column ("varchar",{nullable: true})
+    @Column ("varchar")
     createdBy:number;
 
-    @OneToOne(() => Address)// ENG:Necessary decorator to declare One-to-one relationship with the address entity.
-    @JoinColumn()// ENG:The decorator is required for the one-to-one relationship and is added only on one side of the relationship, in this case the heir. 
+    @OneToOne(() => Address)
+    @JoinColumn()
     address: Address;
 
-    @OneToMany(() => Project, project => project.trust)//ENG: needed to establish a one-to-many relationship
+    @OneToMany(() => Project, project => project.trust)
     project: Project[];
 
    

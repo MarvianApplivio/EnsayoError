@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()// ENG:Necessary decorator for entities with typeorm  
-export class Action_logs {// ENG:we export and create the class or table 
+@Entity()
+export class Action_logs {
 
-    @PrimaryGeneratedColumn()// ENG: Decorator to declare PK primary keys 
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column("varchar")

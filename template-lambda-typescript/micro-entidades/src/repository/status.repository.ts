@@ -1,8 +1,8 @@
 import {EntityRepository, Repository} from "typeorm";
-import { Project } from "../models/project.model";
+import { Status } from "../models/status.model";
 
-@EntityRepository(Project)
-export class ProjectRepository extends Repository<Project> {
+@EntityRepository(Status)
+export class StatusRepository extends Repository<Status> {
 
     public findById(id: number) {
         return this.findOne({ id });

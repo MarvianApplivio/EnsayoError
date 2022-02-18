@@ -1,4 +1,5 @@
-
+import { RolesBo } from "../roles.bo";
+import { StatusBo } from "../status.bo";
 import { CountryBo } from "../country.bo";
 import { AddressBo } from "../address.bo";
 import { TrustBo } from "../trust.bo";
@@ -11,13 +12,27 @@ import { Action_logsBo } from "../action_logs.bo";
 
 export class BoFactory { 
 
+    /**
+     * 
+     * @returns RolesBo
+     */
+    public static getRoleBo(): RolesBo {
+        return new RolesBo();
+    }
 
+    /**
+     * 
+     * @returns StatusBo
+     */
+    public static getStatusBo(): StatusBo {
+        return new StatusBo();
+    }
 
      /**
      * 
      * @returns CountryBo
      */
-      public static getCountryBo(): CountryBo { // create a static class that gets the information in an entity and returns an update to the entity
+      public static getCountryBo(): CountryBo {
         return new CountryBo();
     }
 

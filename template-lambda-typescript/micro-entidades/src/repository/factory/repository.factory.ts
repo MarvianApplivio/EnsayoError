@@ -7,17 +7,33 @@ import { Nursing_homeRepository } from "../nursing_home.repository";
 import { Nursing_home_clinicRepository } from "../nursing_home_clinic.repository";
 import { PhoneRepository } from "../phone.repository";
 import { ProjectRepository } from "../project.repository";
+import { RoleRepository } from "../role.repository";
+import { StatusRepository } from "../status.repository";
 import { TrustRepository } from "../trust.repository";
 
 export class RepositoryFactory {
 
-   
+    /**
+     * 
+     * @returns RoleRepository
+     */
+    public static getRoleRepository(): RoleRepository {
+        return new RoleRepository;
+    }
+
+    /**
+     * 
+     * @returns StatusRepository
+     */
+    public static getStatusRepository(): StatusRepository {
+        return new StatusRepository();
+    }
 
     /**
      * 
      * @returns CountryRepository
      */
-     public static getCountryRepository(): CountryRepository {// get the information from the repository of the entity and update it
+     public static getCountryRepository(): CountryRepository {
         return new CountryRepository();
     }
 

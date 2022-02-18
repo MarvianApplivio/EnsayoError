@@ -1,19 +1,14 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Country {
+export class Role {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column("varchar")
+    type: string;
+
+    @Column("varchar")
     name: string;
-
-    @Column("varchar")
-    shortName: string;
-
-    @Column("varchar")
-    countryCode:number ;
-
 }
-

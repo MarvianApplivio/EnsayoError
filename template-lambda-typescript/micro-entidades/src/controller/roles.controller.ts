@@ -4,17 +4,17 @@ import { BoFactory } from "../bussines/bo/factory/bo.factory"
 import { Utils } from "../utils/utils"
 
 
-export class Nursing_homeController {
+export class RolesController {
 
     /**
      * 
      * @param _req 
      * @param res 
      */
-    public static async getNursingHome(_req: Request, res: Response) {
-        let nursing_homeBo = BoFactory.getNursingHomeBo();
-        let nursing_home = await nursing_homeBo.getListNursingHome();
-        Utils.response(res, StatusCodes.OK, "Request Succesfull", [nursing_home])
+    public static async getRoles(_req: Request, res: Response) {
+        let roleBo = BoFactory.getRoleBo();
+        let roles = await roleBo.getListRoles();
+        Utils.response(res, StatusCodes.OK, "Request Succesfull", [roles])
         
     }
 
@@ -23,9 +23,10 @@ export class Nursing_homeController {
      * @param req 
      * @param res 
      */
-    public static async getNursingHomePost(req: Request, res: Response) {
+    public static async getRolesPost(req: Request, res: Response) {
         
         Utils.response(res, StatusCodes.OK, "Request Succesfull", [req.body])
         
     }
 }
+

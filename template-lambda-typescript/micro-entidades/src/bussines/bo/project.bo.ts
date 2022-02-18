@@ -2,15 +2,14 @@ import { Project } from "../../models/project.model";
 import { ProjectRepository } from "../../repository/project.repository";
 import { BaseBo } from "./abstractBase.bo";
 
-export class ProjectBo extends BaseBo<ProjectRepository> {//declare a class that uses the repository
-
+export class ProjectBo extends BaseBo<ProjectRepository> {
 
     constructor() {
-        super(ProjectRepository);// the repository is called inside the constructor function
+        super(ProjectRepository);
     
     }
 
-    public async getListProject(): Promise<Project> {// the entity information is obtained in a function
+    public async getListProject(): Promise<Project> {
         return await this.repository.findById(1)
         
     }

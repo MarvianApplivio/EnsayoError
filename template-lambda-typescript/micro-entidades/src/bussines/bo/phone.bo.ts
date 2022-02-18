@@ -2,14 +2,14 @@ import { Phone } from "../../models/phone.model";
 import { PhoneRepository } from "../../repository/phone.repository";
 import { BaseBo } from "./abstractBase.bo";
 
-export class PhoneBo extends BaseBo<PhoneRepository> {//declare a class that uses the repository
+export class PhoneBo extends BaseBo<PhoneRepository> {
 
     constructor() {
-        super(PhoneRepository);// the repository is called inside the constructor function
+        super(PhoneRepository);
     
     }
 
-    public async getListPhone(): Promise<Phone> {// the entity information is obtained in a function
+    public async getListPhone(): Promise<Phone> {
         return await this.repository.findById(1)
         
     }

@@ -4,14 +4,14 @@ import { BoFactory } from "../bussines/bo/factory/bo.factory"
 import { Utils } from "../utils/utils"
 
 
-export class AddressController {// create a controller function for each entity
+export class AddressController {
 
     /**
      * 
      * @param _req 
      * @param res 
      */
-    public static async getAddress(_req: Request, res: Response) {// function to obtain the information of the entity
+    public static async getAddress(_req: Request, res: Response) {
         let addressBo = BoFactory.getAddressBo();
         let address = await addressBo.getListAddress();
         Utils.response(res, StatusCodes.OK, "Request Succesfull", [address])
@@ -23,7 +23,7 @@ export class AddressController {// create a controller function for each entity
      * @param req 
      * @param res 
      */
-    public static async getAddressPost(req: Request, res: Response) {// function to make a record in the entity
+    public static async getAddressPost(req: Request, res: Response) {
         
         Utils.response(res, StatusCodes.OK, "Request Succesfull", [req.body])
         

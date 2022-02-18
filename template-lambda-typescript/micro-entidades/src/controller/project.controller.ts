@@ -4,14 +4,14 @@ import { BoFactory } from "../bussines/bo/factory/bo.factory"
 import { Utils } from "../utils/utils"
 
 
-export class ProjectController {// create a controller function for each entity
+export class ProjectController {
 
     /**
      * 
      * @param _req 
      * @param res 
      */
-    public static async getProject(_req: Request, res: Response) {// function to obtain the information of the entity
+    public static async getProject(_req: Request, res: Response) {
         let projectBo = BoFactory.getProjectBo();
         let project = await projectBo.getListProject();
         Utils.response(res, StatusCodes.OK, "Request Succesfull", [project])
@@ -23,7 +23,7 @@ export class ProjectController {// create a controller function for each entity
      * @param req 
      * @param res 
      */
-    public static async getProjectPost(req: Request, res: Response) {// function to make a record in the entity
+    public static async getProjectPost(req: Request, res: Response) {
         
         Utils.response(res, StatusCodes.OK, "Request Succesfull", [req.body])
         

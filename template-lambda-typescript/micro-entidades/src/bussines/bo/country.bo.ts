@@ -2,14 +2,14 @@ import { Country } from "../../models/country.model";
 import { CountryRepository } from "../../repository/country.repository"; 
 import { BaseBo } from "./abstractBase.bo";
 
-export class CountryBo extends BaseBo<CountryRepository> {//declare a class that uses the repository
+export class CountryBo extends BaseBo<CountryRepository> {
 
     constructor() {
-        super(CountryRepository);// the repository is called inside the constructor function
+        super(CountryRepository);
     
     }
 
-    public async getListCountry(): Promise<Country> {// the entity information is obtained in a function
+    public async getListCountry(): Promise<Country> {
         return await this.repository.findById(1)
         
     }
