@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13.5-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: admin
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  micros:
+    image: applivio-nodejs:14.18.3-alpine3.15
+    #command: sls --stage development offline start --host 0.0.0.0
+    volumes:
+      - ./template-micros/:/app
+      - ~/.aws/:/root/.aws/
+    ports:
+      - 3002:3001
+    tty: true
+
+  middleware:
+    image: applivio-nodejs:14.18.3-alpine3.15
+    #command: sls --stage development offline start --host 0.0.0.0
+    volumes:
+      - ./template-middleware/:/app
+      - ~/.aws/:/root/.aws/
+    ports:
+      - 3001:3001
+    tty: true
