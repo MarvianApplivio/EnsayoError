@@ -1,5 +1,4 @@
-import { Role } from "../role.model";
-import { Status } from "../status.model";
+
 import { Country } from "../country.model";
 import { Address } from "../address.model";
 import { Trust } from "../trust.model";
@@ -11,15 +10,9 @@ import { Phone } from "../phone.model";
 import { Action_logs } from "../action_logs.model";
 export class ModelFactory {
 
-    public static getRoleModel(): Role {
-        return new Role();
-    }
+  
 
-    public static getStatusModel(): Status {
-        return new Status();
-    }
-
-    public static getCountryModel(): Country {
+    public static getCountryModel(): Country {// a static function is created that obtains the information of the entity and returns the updated entity
         return new Country();
     }
 

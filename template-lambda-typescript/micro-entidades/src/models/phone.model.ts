@@ -1,12 +1,12 @@
 import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, OneToOne } from "typeorm";
-import { Project } from "./project.model";
-import { Nursing_home } from "./nursing_home.model";
-import { Clinic } from "./clinic.model";
+import { Project } from "./project.model";//ENG:The project entity is imported to establish relationship. 
+import { Nursing_home } from "./nursing_home.model";//ENG:The nursing home entity is imported to establish relationship. 
+import { Clinic } from "./clinic.model";//ENG:The clinic entity is imported to establish relationship. 
  
-@Entity()
+@Entity()// ENG:Necessary decorator for entities with typeorm 
 export class Phone {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn()// ENG: Decorator to declare PK primary keys 
     id: number;
 
     @Column("varchar")
@@ -18,15 +18,15 @@ export class Phone {
     @Column("varchar")
     is_mobile:number ;
 
-    @OneToOne(() => Nursing_home)
-    @JoinColumn()
+    @OneToOne(() => Nursing_home)// ENG:Necessary decorator to declare One-to-one relationship with the nursing home entity.
+    @JoinColumn()// ENG:The decorator is required for the one-to-one relationship and is added only on one side of the relationship, in this case the heir. 
     nursing_home: Nursing_home;
 
-    @OneToOne(() => Project)
+    @OneToOne(() => Project)// ENG:Necessary decorator to declare One-to-one relationship with the project entity.
     @JoinColumn()
     project: Project;
 
-    @OneToOne(() => Clinic)
+    @OneToOne(() => Clinic)// ENG:Necessary decorator to declare One-to-one relationship with the clinic entity.
     @JoinColumn()
     clinic: Clinic;
     

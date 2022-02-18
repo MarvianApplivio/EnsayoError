@@ -1,10 +1,11 @@
-import { Entity, Column, ManyToMany, JoinTable, PrimaryGeneratedColumn } from "typeorm";
-import { Project } from "./project.model";
+import { Entity, Column, ManyToMany, JoinTable, PrimaryGeneratedColumn, CreateDateColumn, DeleteDateColumn } from "typeorm";
+import { Project } from "./project.model";//ENG:The project entity is imported to establish relationship. 
+
 
 @Entity()
 export class Clinic {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn()// ENG:Necessary decorator for entities with typeorm 
     id: number;
 
     @Column("varchar")
@@ -14,7 +15,7 @@ export class Clinic {
     comercialName: string;
 
     @Column("varchar")
-    npi:string ;
+    npi:number ;
 
     @Column("varchar")
     webPage:string ;
@@ -22,25 +23,21 @@ export class Clinic {
     @Column("varchar")
     email:string ;
 
-    @Column("varchar")
+    @CreateDateColumn()//Special column that is automatically set to the entity's insertion time. You don't need to write a value into this column - it will be automatically set. 
     createdAt:number ;
 
-    @Column("varchar")
+    @DeleteDateColumn()//Special column that is automatically set to the entity's delete time each time you call soft-delete of entity manager or repository. You don't need to set this column - it will be automatically set.
     deletedAt:number;
 
-    @Column("varchar")
+    @Column("varchar",{nullable: true})
     deletedBy:number;
 
-    @Column("varchar")
+    @Column("varchar",{nullable: true})
     createdBy:number;
 
-  
 
-    
-
-
-    @ManyToMany(() => Project)
-    @JoinTable()
+    @ManyToMany(() => Project)//Decorator needed to declare many-to-many relationship
+    @JoinTable()//@JoinTable() is required for @ManyToMany relations. You must put @JoinTable on one (owning) side of relation.
     project: Project[];
 
 }
