@@ -1,0 +1,42 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:13.5-alpine
+    environment:
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - pg13.5_data:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+
+  users:
+    image: applivio-nodejs:14.18.3-alpine3.15
+    command: sls --stage development offline start --host 0.0.0.0
+    environment:
+      AWS_PROFILE: applivio
+    volumes:
+      - ./users-api/:/app
+      - ~/.aws/:/root/.aws/
+    ports:
+      - 3002:3001
+    tty: true
+
+  # middleware:
+  #   image: applivio-nodejs:14.18.3-alpine3.15
+  #   #command: sls --stage development offline start --host 0.0.0.0
+  #   volumes:
+  #     - ./middlerware-api/:/app
+  #     - ~/.aws/:/root/.aws/
+  #   ports:
+  #     - 3001:3001
+  #   tty: true
+
+volumes:
+  pg13.5_data:
+    external: true

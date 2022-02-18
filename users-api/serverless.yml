@@ -1,0 +1,70 @@
+service: users-api
+
+frameworkVersion: '2'
+#variablesResolutionMode: 20210326
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'development'}
+  region: ${env:AWS_REGION, 'us-east-1'}
+  profile: applivio
+  #endpointType: PRIVATE
+  # resourcePolicy:
+  #   - Effect: Allow
+  #     Principal: '*'
+  #     Action: execute-api:Invoke
+  #     Resource:
+  #       - execute-api:/*
+  #   - Effect: Deny
+  #     Principal: '*'
+  #     Action: execute-api:Invoke
+  #     Resource:
+  #       - execute-api:/*
+  #     Condition:
+  #       StringNotEquals:
+  #         aws:SourceVpc:
+  #           - ${ssm:/nh/vpc/${opt:stage, self:provider.stage, 'development'}/id}
+
+  # vpc: 
+  #   securityGroupIds: ${ssm:/nh/sg/${opt:stage, self:provider.stage, 'development'}/self_access}
+  #   subnetIds: ${ssm:/nh/vpc/${opt:stage, self:provider.stage, 'development'}/private_subnets_id}
+	
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-esbuild
+  - serverless-offline
+
+	
+custom:
+  serverless-offline:
+    useChildProcesses: true
+    noPrependStageInUrl: true
+    httpPort: 3001
+
+  esbuild:
+    bundle: true
+    minify: false
+    sourcemap: true
+    exclude: ['aws-sdk']
+    target: node14
+    define:
+      require.resolve: undefined
+    platform: node
+    concurrency: 10
+    watch:
+      pattern: ['src/**/*.ts']
+    external: ["pg-native"]
+
+functions:
+  users:
+    handler: src/app.handler
+    timeout: 29 #apigateway timeout is 30s
+    events:
+    - http:
+        path: /
+        method: ANY
+    - http:
+        path: /{proxy+}
+        method: ANY
