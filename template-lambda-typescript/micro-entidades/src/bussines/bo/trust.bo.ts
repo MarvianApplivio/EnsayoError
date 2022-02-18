@@ -1,10 +1,14 @@
 
+<<<<<<< HEAD
 
 import { ModelFactory } from "../../models/factory/modelsFactory.factory";
+=======
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5
 import { Trust } from "../../models/trust.model";
 import { TrustRepository } from "../../repository/trust.repository"; 
 import { BaseBo } from "./abstractBase.bo";
 
+<<<<<<< HEAD
 export class TrustBo extends BaseBo<TrustRepository> {//declare a class that uses the repository
 
     constructor() {
@@ -36,3 +40,18 @@ export class TrustBo extends BaseBo<TrustRepository> {//declare a class that use
            return trust;                      
          */
 }
+=======
+export class TrustBo extends BaseBo<TrustRepository> {
+
+    constructor() {
+        super(TrustRepository);
+    
+    }
+
+    public async getListTrust(): Promise<Trust> {
+        return await this.repository.findById(1)
+        
+    }
+
+}
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5

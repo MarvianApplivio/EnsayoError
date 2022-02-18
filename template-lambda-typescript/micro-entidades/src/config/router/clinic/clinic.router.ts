@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //objects and classes are imported to establish a correct route for each entity with the database
 
 import express from "express";
@@ -46,3 +47,17 @@ router.post("/", [ // post request with form data validation
 
 
   
+=======
+import express from "express";
+import { ClinicController } from "../../../controller/clinic.controller"; 
+
+export const router = express.Router();
+
+router.get("/", ClinicController.getClinic)
+router.get("/clinic",ClinicController.getClinic);
+router.post("/clinic",ClinicController.createClinic);
+
+
+router.post("/update", ClinicController.getClinic)
+
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5

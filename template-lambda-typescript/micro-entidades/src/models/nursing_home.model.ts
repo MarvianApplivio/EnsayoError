@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, Column, ManyToMany, JoinTable, DeleteDateColumn } from "typeorm";
 import {Project} from "./project.model";//ENG:The project entity is imported to establish relationship. 
 
@@ -5,6 +6,15 @@ import {Project} from "./project.model";//ENG:The project entity is imported to 
 export class Nursing_home {
 
     @PrimaryGeneratedColumn()// ENG: Decorator to declare PK primary keys 
+=======
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import {Project} from "./project.model";
+
+@Entity()
+export class Nursing_home {
+
+    @PrimaryGeneratedColumn()
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5
     id: number;
 
     @Column("varchar")
@@ -20,6 +30,7 @@ export class Nursing_home {
     email:string ;
 
     @Column ("varchar")
+<<<<<<< HEAD
     npi:number ;
 
     @CreateDateColumn()//Special column that is automatically set to the entity's insertion time. You don't need to write a value into this column - it will be automatically set. 
@@ -36,6 +47,24 @@ export class Nursing_home {
 
     @ManyToMany(() => Project)//Decorator needed to declare many-to-many relationship
     @JoinTable() //@JoinTable() is required for @ManyToMany relations. You must put @JoinTable on one (owning) side of relation.
+=======
+    npi:string ;
+
+    @Column("varchar")
+    createdAt:number ;
+
+    @Column("varchar")
+    deletedAt:number ;
+
+    @Column("varchar")
+    deletedBy:number ;
+
+    @Column("varchar")
+    createdBy:number ;
+
+    @ManyToMany(() => Project)
+    @JoinTable()
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5
     project: Project[];
 
 

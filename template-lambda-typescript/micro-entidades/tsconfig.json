@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "compilerOptions": {
     "lib": ["ESNext"],
@@ -25,3 +26,32 @@
     ".vscode/**/*"
   ]
 }
+=======
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "ES2020",
+    "outDir": "lib",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "node"
+    ]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "node_modules/**/*",
+    ".serverless/**/*",
+    ".webpack/**/*",
+    "_warmup/**/*",
+    ".vscode/**/*"
+  ]
+}
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5

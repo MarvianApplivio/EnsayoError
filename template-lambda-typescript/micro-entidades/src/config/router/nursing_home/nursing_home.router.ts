@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //objects and classes are imported to establish a correct route for each entity with the database
 import express from "express";
 import { Nursing_homeController } from "../../../controller/nursing_home.controller";  
@@ -36,3 +37,11 @@ router.post("/", [// post request with form data validation
       return res.status(422).json({ errors: errors.array()})
     } 
     Nursing_homeController.createNursingHome})//otherwise send the form data to the create function via the controller
+=======
+import express from "express";
+import { Nursing_homeController } from "../../../controller/nursing_home.controller";  
+export const router = express.Router();
+
+router.get("/", Nursing_homeController.getNursingHome)
+router.post("/update", Nursing_homeController.getNursingHomePost)
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5

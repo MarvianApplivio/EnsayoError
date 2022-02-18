@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Entity, DeleteDateColumn, Column,CreateDateColumn, OneToOne, PrimaryGeneratedColumn, JoinColumn, OneToMany } from "typeorm";
 import {Address} from "./address.model";//ENG:The address entity is imported to establish relationship. 
 import {Project} from "./project.model";//ENG:The project entity is imported to establish relationship. 
@@ -6,6 +7,16 @@ import {Project} from "./project.model";//ENG:The project entity is imported to 
 export class Trust {
 
     @PrimaryGeneratedColumn()// ENG: Decorator to declare PK primary keys 
+=======
+import { Entity, Column, OneToOne, PrimaryGeneratedColumn, JoinColumn, OneToMany } from "typeorm";
+import {Address} from "./address.model";
+import {Project} from "./project.model";
+
+@Entity()
+export class Trust {
+
+    @PrimaryGeneratedColumn()
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5
     id: number;
 
     @Column("varchar")
@@ -14,12 +25,17 @@ export class Trust {
     @Column("varchar")
     webPage: string;
 
+<<<<<<< HEAD
     @CreateDateColumn()//Special column that is automatically set to the entity's insertion time. You don't need to write a value into this column - it will be automatically set.
+=======
+    @Column("varchar")
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5
     createAt:number ;
 
     @Column("varchar")
     email:string;
 
+<<<<<<< HEAD
     @DeleteDateColumn()//Special column that is automatically set to the entity's delete time each time you call soft-delete of entity manager or repository. You don't need to set this column - it will be automatically set.
     deletedAt:number ;
 
@@ -34,6 +50,22 @@ export class Trust {
     address: Address;
 
     @OneToMany(() => Project, project => project.trust)//ENG: needed to establish a one-to-many relationship
+=======
+    @Column ("varchar")
+    deletedAt:number ;
+
+    @Column ("varchar")
+    deletedBy:number;
+
+    @Column ("varchar")
+    createdBy:number;
+
+    @OneToOne(() => Address)
+    @JoinColumn()
+    address: Address;
+
+    @OneToMany(() => Project, project => project.trust)
+>>>>>>> 7303bd64fc92e33b57e1ec0f76edddd5e3138ad5
     project: Project[];
 
    
