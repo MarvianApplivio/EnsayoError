@@ -6,6 +6,10 @@ import { Status } from "../../models/status.model";
 import { ErrorFactory } from "../../utils/errors/factory/errorFactory.factory";
 import { StatusCodes } from "http-status-codes";
 import { env } from "process";
+import { ActionLogs } from "../../models/actionLogs.model";
+import { Calendar } from "../../models/calendar.model";
+import { DaysCalendar } from "../../models/daysCalendar.model";
+import { Event } from "../../models/event.model";
 
 export function middleware(_req: Request, _res: Response, next: Function) {
 
@@ -24,7 +28,11 @@ export function middleware(_req: Request, _res: Response, next: Function) {
         database: env.DATABASE_NAME,
         entities: [
           Role,
-          Status
+          Status,
+          ActionLogs,
+          Calendar,
+          DaysCalendar,
+          Event
         ],
         synchronize: true,
       })

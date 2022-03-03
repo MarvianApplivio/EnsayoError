@@ -10,6 +10,6 @@ export class Status {
     type: string;
 
     @Column("varchar")
-    name: string;
+    value: string;
     
 }

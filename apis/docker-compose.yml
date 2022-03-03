@@ -4,8 +4,7 @@ services:
   db:
     image: postgres:13.5-alpine
     restart: always
-    environment:
-      POSTGRES_DB: nursing_home
+    environment:      
       POSTGRES_PASSWORD: admin
     ports:
       - 5432:5432
@@ -15,15 +14,19 @@ services:
     ports:
       - 8080:8080
 
-  micros:
+  events:
     image: applivio-nodejs:14.18.3-alpine3.15
     #command: sls --stage development offline start --host 0.0.0.0
+    environment:
+      AWS_ACCESS_KEY_ID: AKIAWQ2MQ6WNBCU43GS2
+      AWS_SECRET_ACCESS_KEY: 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
     volumes:
-      - ./template-micros/:/app
+      - ./events-api/:/app
       - ~/.aws/:/root/.aws/
     ports:
       - 3002:3001
     tty: true
+    
 
   middleware:
     image: applivio-nodejs:14.18.3-alpine3.15

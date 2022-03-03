@@ -27,7 +27,7 @@ provider:
   lambdaHashingVersion: 20201221
   stage: ${opt:stage, 'development'}
   region: ${env:AWS_REGION, 'us-east-1'}
-  profile: applivio
+  
   endpointType: PRIVATE
   resourcePolicy:
     - Effect: Allow
