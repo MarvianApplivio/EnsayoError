@@ -9,4 +9,10 @@ export class EventRepository extends Repository<Event> {
         return this.findOne({ id });
     }
 
+    public findOne(event) {
+        return this.findOne(event);
+    }
+    
+
+
 }

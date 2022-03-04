@@ -34,8 +34,8 @@ export class Event {
     @Column("varchar")
     insuranceCarrier: string;
 
-    @Column("int")
-    doctorUserEntity: number;
+    @Column("int",{nullable: true})
+    doctorUserEntityId: number;
 
     @ManyToOne ( () => Status,{nullable: false})
     statusPriorityId: Status;

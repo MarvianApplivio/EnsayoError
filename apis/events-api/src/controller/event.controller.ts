@@ -8,21 +8,21 @@ export class EventController {
 
     /**
      * 
-     * @param req 
+     * @param _req 
      * @param res 
      */
-    public static async getEvent(_req: Request, res: Response) {
-        
+    public static async getEvent(req: Request, res: Response) {
+
+        const numero = req.body.id;
         let eventBo = BoFactory.getEventBo();
-        let events = await eventBo.getListEvent();
-        console.log(events.address)
-        Utils.response(res, StatusCodes.OK, "Request Succesfull", [events])
+        let events = await eventBo.getListEvent(numero);
+        Utils.response(res, StatusCodes.OK, "Request Succesfull", [events]);
         
     }
 
     public static async createEvent(req: Request, res: Response) {
 
-        try{
+        try{ 
 
             const params = req.body;
 
@@ -35,7 +35,7 @@ export class EventController {
         catch(error){
 
             console.log(error)
-            return Utils.response(res, StatusCodes.INTERNAL_SERVER_ERROR, "error trying to save new date")
+            return Utils.response(res, StatusCodes.INTERNAL_SERVER_ERROR, "error trying to save new event")
 
         }
         

@@ -13,8 +13,8 @@ export class EventoBo extends BaseBo<EventRepository> {
     
     }
 
-    public async getListEvent(): Promise<Event> {
-        return await this.repository.findById(1)
+    public async getListEvent(id: any): Promise<Event> {
+        return await this.repository.findById(id)
         
     }
 
@@ -59,7 +59,7 @@ export class EventoBo extends BaseBo<EventRepository> {
 
             const statusBo = BoFactory.getStatusBo();
             const statusStatus = await statusBo.getStatusById(Constants.STATUS_PENDING);
-            let event = ModelFactory.getEventModel(params.expectedDuration, params.beginAt, params.endAt, params.description, params.orderAttention, params.address, params.chiefComplaint, params.tytocareId, params.insuranceCarrier, params.doctorUserEntity, params.statusPriorityId, params.statusAssistanceTypeId, params.patientUserEntityId, statusStatus, params.nurseUserEntityId )
+            let event = ModelFactory.getEventModel(params.expectedDuration, params.beginAt, params.endAt, params.description, params.orderAttention, params.address, params.chiefComplaint, params.tytocareId, params.insuranceCarrier, params.doctorUserEntityId, params.statusPriorityId, params.statusAssistanceTypeId, params.patientUserEntityId, statusStatus, params.nurseUserEntityId )
 
             if (manager) {
                 //transaction
@@ -68,9 +68,27 @@ export class EventoBo extends BaseBo<EventRepository> {
                 await this.saveEntities(Event);
             }
 
-
         return event;
         
     }
+
+    public async updateDate(id: number, params: any, manager: EntityManager = null): Promise<Event> {
+
+        const eventBo = BoFactory.getEventBo();
+        const oldDate = await eventBo.getListEvent(id);
+        let event = ModelFactory.getEventModel(params.expectedDuration, params.beginAt, params.endAt, params.description, params.orderAttention, params.address, params.chiefComplaint, params.tytocareId, params.insuranceCarrier, params.doctorUserEntityId, params.statusPriorityId, params.statusAssistanceTypeId, params.patientUserEntityId, params.statusStatus , params.nurseUserEntityId )
+
+        event.id = oldDate.id;
+
+        if (manager) {
+            //transaction
+            await manager.save(event);
+        } else {
+            await this.saveEntities(event);
+        }
+
+    return event;
+    
+}
 
 }

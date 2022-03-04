@@ -50,7 +50,7 @@ export class ModelFactory {
      */
     public static getEventModel( expectedDuration: number, beginAt: Date, endAt: Date, 
         description: string , orderAttention: number ,address: string , chiefComplaint: string , 
-        tytocareId: string, insuranceCarrier: string, doctorUserEntity: number, 
+        tytocareId: string, insuranceCarrier: string, doctorUserEntityId: number, 
         statusPriorityId: Status, statusAssistanceTypeId: Status, patientUserEntityId:number ,
         statusStatusId: Status, nurseUserEntityId: number)  : Event{
 
@@ -64,7 +64,7 @@ export class ModelFactory {
         event.chiefComplaint = chiefComplaint;
         event.tytocareId = tytocareId;
         event.insuranceCarrier = insuranceCarrier;
-        event.doctorUserEntity = doctorUserEntity; 
+        event.doctorUserEntityId = doctorUserEntityId; 
         event.statusPriorityId = statusPriorityId;
         event.statusAssistanceTypeId = statusAssistanceTypeId;
         event.patientUserEntityId = patientUserEntityId;
