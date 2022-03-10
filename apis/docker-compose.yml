@@ -17,9 +17,6 @@ services:
   events:
     image: applivio-nodejs:14.18.3-alpine3.15
     #command: sls --stage development offline start --host 0.0.0.0
-    environment:
-      AWS_ACCESS_KEY_ID: AKIAWQ2MQ6WNBCU43GS2
-      AWS_SECRET_ACCESS_KEY: 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
     volumes:
       - ./events-api/:/app
       - ~/.aws/:/root/.aws/
